@@ -1,0 +1,7 @@
+{
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.library": [
+    "${env:APPDATA}/Balatro/Mods/smods-1.0.0-beta-1620a/lsp_def",
+  ],
+  "Lua.diagnostics.globals": ["Orchid"],
+}

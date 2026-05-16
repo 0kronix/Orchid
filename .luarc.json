@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumnecko/lua-language-server/master/meta/3rd.json",
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "workspace": {
+    "library": ["${env:APPDATA}/Balatro/Mods/smods-1.0.0-beta-1620a/lsp_def"]
+  },
+  "diagnostics": {
+    "globals": ["Orchid"]
+  }
+}
