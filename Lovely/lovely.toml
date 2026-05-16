@@ -1,0 +1,107 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 214748363
+
+[[patches]] #G.GAME 
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+'''
+position = 'after'
+match_indent = true 
+payload = '''
+dentalion_last_sold_joker = nil
+'''
+
+[[patches]]
+[patches.regex]
+target = '=[SMODS _ "src/card_draw.lua"]'
+pattern = 'then\n\s+local shared_sprite ='
+position = 'before'
+payload = 'and (self.ability.set ~= "DentalionTrinket" or self.config.center.unlocked) '
+times = 1
+
+# Render trinket unlock modal properly
+[[patches]]
+[patches.regex]
+target = 'functions/UI_definitions.lua'
+pattern = "card_center\\.set == 'Voucher' and localize\\('k_voucher'\\) or localize\\('k_joker'\\)"
+position = 'at'
+payload = "card_center.set == 'Voucher' and localize('k_voucher') or card_center.set == 'DentalionTrinket' and localize('k_dentaliontrinket') or localize('k_joker')"
+times = 1
+
+# cont.
+[[patches]]
+[patches.regex]
+target = 'functions/UI_definitions.lua'
+pattern = 'G\.CARD_H, G\.P_CARDS\.empty, card_center'
+position = 'before'
+payload = "card_center.set == 'DentalionTrinket' and G.CARD_W or "
+times = 2
+
+# Put trinkets in shop
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = 'G.GAME.current_round.voucher = SMODS.get_next_vouchers()'
+position = 'before'
+match_indent = true
+times = 1
+payload = "G.GAME.current_round.dentalion_trinket = Dentalion_API.get_next_trinkets()\n"
+
+# cont.
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = 'local vouchers_to_spawn = 0'
+position = 'before'
+match_indent = true
+times = 1
+payload = "Dentalion_API.add_trinkets_to_shop()\n"
+
+# cont.
+[[patches]]
+[patches.regex]
+target = 'functions/UI_definitions.lua'
+pattern = "local t2 = "
+position = 'after'
+times = 1
+payload = "card.ability.set == 'DentalionTrinket' and Dentalion_API.equip_button(card) or "
+
+# cont.
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = "if card.area == G.shop_vouchers and G.shop_vouchers then --Add a redeem button"
+position = 'before'
+match_indent = true
+times = 1
+payload = '''
+if card.area == G.shop_vouchers and G.shop_vouchers then
+    base_attach.children.use_button = G.UIDEF.card_focus_button{
+      card = card, parent = base_attach, type = 'buy',
+      func = 'dentalion_can_equip', button = 'dentalion_equip_from_shop', card_width = card_width
+    }
+end
+'''
+
+# Create trinket area
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = 'self.consumeables = CardArea('
+position = 'before'
+match_indent = true
+times = 1
+payload = "Dentalion_API.create_trinket_area()\n"
+
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "-- TARGET: add your own CardAreas for joker evaluation"
+position = 'before'
+match_indent = true
+times = 1
+payload = "t[#t + 1] = G.dentalion_trinket_area"
