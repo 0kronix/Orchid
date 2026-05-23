@@ -9,6 +9,42 @@ return {
                     "earn {C:money}$#1#{}",
                 },
             },
+
+            j_orchid_summerjoker = {
+                name = "Summer Joker",
+                text = {
+                    "{C:green}#1# in #2#{} chance to",
+                    "Retrigger each played",
+                    "{C:hearts}Heart{} card when scored",
+                },
+            },
+
+            j_orchid_autumnjoker = {
+                name = "Autumn Joker",
+                text = {
+                    "{C:green}#1# in #2#{} chance to",
+                    "Retrigger each played",
+                    "{C:diamonds}Diamond{} card when scored",
+                },
+            },
+
+            j_orchid_winterjoker = {
+                name = "Winter Joker",
+                text = {
+                    "{C:green}#1# in #2#{} chance to",
+                    "Retrigger each played",
+                    "{C:clubs}Club{} card when scored",
+                },
+            },
+
+            j_orchid_springjoker = {
+                name = "Spring Joker",
+                text = {
+                    "{C:green}#1# in #2#{} chance to",
+                    "Retrigger each played",
+                    "{C:spades}Spade{} card when scored",
+                },
+            },
         },
     },
 }
