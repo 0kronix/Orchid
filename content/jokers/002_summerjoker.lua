@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "summerjoker",
     atlas = 'jokers',
-    pos = Orchid.get_atlas_pos(2, 6),
+    pos = Orchid.get_atlas_pos(2),
 
     cost = 6,
     rarity = 2,
@@ -21,7 +21,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.cardarea == G.play and context.repetition and not context.repetition_only then
-            if Orchid.prob_check(G.GAME.probabilities.normal, card.ability.extra.odds, 'summerjoker') then
+            if Orchid.prob_check(G.GAME.probabilities.normal, card.ability.extra.odds, card.config.center.key) then
                 if context.other_card:is_suit('Hearts', true) then
                     return {
                         message = localize('k_again_ex'),

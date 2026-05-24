@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "lastphoto",
     atlas = 'jokers',
-    pos = Orchid.get_atlas_pos(1, 6),
+    pos = Orchid.get_atlas_pos(1),
 
     pixel_size = { h = 95 / 1.2 },
 

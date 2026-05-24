@@ -1,3 +1,5 @@
+Orchid.joker_atlas_cols = 8
+
 function Orchid.prob_check(chance, odds, key)
     if pseudorandom(key) < chance / odds then
         return true
@@ -134,6 +136,7 @@ function Orchid.tablefind(tbl, val)
 end
 
 function Orchid.get_atlas_pos(id, atl)
+    atl = atl or Orchid.joker_atlas_cols
     local x_id, y_id = 0, 0
     if atl > 0 then
         if id <= atl then
@@ -146,7 +149,7 @@ function Orchid.get_atlas_pos(id, atl)
             end
         end
         y_id = math.ceil(id / atl) - 1
-        return {x = x_id, y = y_id}
+        return { x = x_id, y = y_id }
     else
         return { y = id - 1 }
     end

@@ -45,6 +45,15 @@ return {
                     "{C:spades}Spade{} card when scored",
                 },
             },
+
+            j_orchid_tornado = {
+                name = "Tornado",
+                text = {
+                    "{C:attention}Played cards{} are",
+                    "{C:attention}shuffled{} before scoring,",
+                    "{X:mult,C:white}X#1#{} Mult",
+                },
+            },
         },
     },
 }
