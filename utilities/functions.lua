@@ -135,9 +135,14 @@ function Orchid.tablefind(tbl, val)
     return false
 end
 
+Orchid.soul_count = 0
+
 function Orchid.get_atlas_pos(id, atl)
     atl = atl or Orchid.joker_atlas_cols
+    id = id + Orchid.soul_count
+
     local x_id, y_id = 0, 0
+
     if atl > 0 then
         if id <= atl then
             x_id = id - 1
@@ -153,4 +158,19 @@ function Orchid.get_atlas_pos(id, atl)
     else
         return { y = id - 1 }
     end
+end
+
+--- Use instead of SMODS.Joker: pass atlas_id (1, 2, 3…), optional soul = true.
+function Orchid.joker(def)
+    def.atlas_id = nil
+
+    def.pos = Orchid.get_atlas_pos(id)
+
+    if def.soul then
+        def.soul_pos = { x = def.pos.x + 1, y = def.pos.y }
+        Orchid.soul_count = Orchid.soul_count + 1
+        def.soul = nil
+    end
+
+    return SMODS.Joker(def)
 end

@@ -1,7 +1,7 @@
-SMODS.Joker {
+Orchid.joker {
     key = "winterjoker",
     atlas = 'jokers',
-    pos = Orchid.get_atlas_pos(4),
+    atlas_id = 4,
 
     cost = 6,
     rarity = 2,

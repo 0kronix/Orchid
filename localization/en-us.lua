@@ -54,6 +54,14 @@ return {
                     "{X:mult,C:white}X#1#{} Mult",
                 },
             },
+
+            j_orchid_blackclover = {
+                name = "Black Clover",
+                text = {
+                    "Played {C:clubs}Club{} {C:attention}Lucky{} cards",
+                    "earn {C:money}$#1#{} when scored",
+                },
+            },
         },
     },
 }
