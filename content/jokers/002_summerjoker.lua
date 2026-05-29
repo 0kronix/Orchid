@@ -3,7 +3,7 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 2,
 
-    cost = 6,
+    cost = 7,
     rarity = 2,
 
     blueprint_compat = true,

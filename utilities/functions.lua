@@ -7,7 +7,7 @@ function Orchid.prob_check(chance, odds, key)
     return false
 end
 
-function Orchid.convert_to(card, suit, key)
+function Orchid.convert_to(card, suit)
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.15,
@@ -23,7 +23,7 @@ function Orchid.convert_to(card, suit, key)
         trigger = 'after',
         delay = 0.1,
         func = function()
-            SMODS.change_base(card, suit_conv)
+            SMODS.change_base(card, suit)
             return true
         end
     }))
@@ -38,6 +38,48 @@ function Orchid.convert_to(card, suit, key)
         end
     }))
     delay(0.5)
+end
+
+function Orchid.modify_rank(card, cnt)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.3,
+        func = function()
+            SMODS.modify_rank(card, cnt)
+            play_sound('card1')
+            card:juice_up(0.3, 0.3)
+            return true
+        end
+    }))
+    delay(0.5)
+end
+
+function Orchid.pick_hand(exclude, key)
+    local pool = {}
+    for k, _ in pairs(G.GAME.hands) do
+        if SMODS.is_poker_hand_visible(k) and k ~= exclude then
+            pool[#pool + 1] = k
+        end
+    end
+    if #pool == 0 then
+        for k, _ in pairs(G.GAME.hands) do
+            if SMODS.is_poker_hand_visible(k) then
+                pool[#pool + 1] = k
+            end
+        end
+    end
+    return pseudorandom_element(pool, pseudoseed(key))
+end
+
+function Orchid.count_shop_items()
+    local count = 0
+    local areas = { G.shop_jokers, G.shop_booster, G.shop_vouchers }
+    for _, area in ipairs(areas) do
+        if area and area.cards then
+            count = count + #area.cards
+        end
+    end
+    return count
 end
 
 function Orchid.on_left_or_right_of(card, area, step)
@@ -160,8 +202,8 @@ function Orchid.get_atlas_pos(id, atl)
     end
 end
 
---- Use instead of SMODS.Joker: pass atlas_id (1, 2, 3…), optional soul = true.
 function Orchid.joker(def)
+    local id = assert(def.atlas_id, "Orchid.joker: atlas_id is required")
     def.atlas_id = nil
 
     def.pos = Orchid.get_atlas_pos(id)
