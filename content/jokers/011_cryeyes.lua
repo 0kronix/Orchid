@@ -38,7 +38,7 @@ Orchid.joker {
             end
         end
 
-        if context.joker_main and card.ability.extra.cur_chips > 0 then
+        if context.joker_main then
             return {
                 chips = card.ability.extra.cur_chips,
                 card = card,

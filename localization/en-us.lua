@@ -121,6 +121,15 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#3#{}{C:inactive}, Previous: {C:attention}#4#{}{C:inactive}){}",
                 },
             },
+
+            j_orchid_tinyhatjoker = {
+                name = "Tiny Hat Joker",
+                text = {
+                    "Every {C:attention}#1#{} Tags give",
+                    "{X:chips,C:white}X#2#{} Chips",
+                    "{C:inactive}(Currently {X:chips,C:white}X#3#{}{C:inactive}){}",
+                },
+            },
         },
     },
 }

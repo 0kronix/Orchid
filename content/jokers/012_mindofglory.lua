@@ -56,7 +56,7 @@ Orchid.joker {
             return ret
         end
 
-        if context.joker_main and card.ability.extra.cur_xmult > 1 then
+        if context.joker_main then
             return {
                 xmult = card.ability.extra.cur_xmult
             }
