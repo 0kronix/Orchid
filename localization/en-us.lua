@@ -130,6 +130,25 @@ return {
                     "{C:inactive}(Currently {X:chips,C:white}X#3#{}{C:inactive}){}",
                 },
             },
+
+            j_orchid_agiftfromabove = {
+                name = "A Gift From Above",
+                text = {
+                    "{C:red}Self destructs{} after",
+                    "{C:attention}#1#{} rounds, gain one of:",
+                    "{C:attention}#2#{} random {C:attention}Tags{}, {C:money}$#3#{}",
+                    "or {C:blue}+#4#{} hand permanently",
+                    "{C:inactive}(Currently {C:attention}#5#{}{C:inactive}/#1# rounds){}",
+                },
+            },
+
+            j_orchid_goldenboy = {
+                name = "Golden Boy",
+                text = {
+                    "{C:attention}Gold{} cards can be",
+                    "sold for {C:money}$#1#{}",
+                },
+            },
         },
     },
 }

@@ -1,7 +1,7 @@
 ------------ MOD CODE -------------------------
 
 Orchid = SMODS.current_mod
-local mod_path = ''..SMODS.current_mod.path
+local mod_path = '' .. SMODS.current_mod.path
 
 local function assert_files_from_folder(base_fs)
     local list = {}
@@ -16,6 +16,10 @@ local function assert_files_from_folder(base_fs)
         assert(SMODS.load_file(base_fs .. "/" .. name))()
     end
 end
+
+SMODS.current_mod.optional_features = {
+    retrigger_joker = true,
+}
 
 -- Misc
 assert_files_from_folder("utilities")
