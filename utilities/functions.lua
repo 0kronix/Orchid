@@ -409,7 +409,7 @@ function Orchid.joker(def)
     def.pos = Orchid.get_atlas_pos(id)
 
     if def.soul then
-        def.soul_pos = { x = def.pos.x + 1, y = def.pos.y }
+        def.soul_pos = Orchid.get_atlas_pos(id + 1)
         Orchid.soul_count = Orchid.soul_count + 1
         def.soul = nil
     end

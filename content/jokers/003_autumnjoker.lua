@@ -16,7 +16,8 @@ Orchid.joker {
     config = { extra = { odds = 4, ret = 1 } },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.ret } }
+        local num, den = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+        return { vars = { num, den, card.ability.extra.ret } }
     end,
 
     calculate = function(self, card, context)

@@ -2,6 +2,7 @@ Orchid.joker {
     key = "goldenboy",
     atlas = 'jokers',
     atlas_id = 15,
+    soul = true,
 
     cost = 7,
     rarity = 3,

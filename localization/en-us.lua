@@ -86,7 +86,7 @@ return {
                 text = {
                     "{C:green}#1# in #2#{} chance to",
                     "earn {C:money}$#3#{} when",
-                    "{C:attention}rank{} card is scored",
+                    "{C:attention}numbered{} card is scored",
                     "{s:0.8,C:inactive}(Chance increases with rank){}",
                 },
             },
@@ -147,6 +147,16 @@ return {
                 text = {
                     "{C:attention}Gold{} cards can be",
                     "sold for {C:money}$#1#{}",
+                },
+            },
+
+            j_orchid_greatempress = {
+                name = "Great Empress",
+                text = {
+                    "{C:green}#1# in #2#{} chance to replace",
+                    "a card in {C:attention}Arcana{} or",
+                    "{C:attention}Spectral{} packs with",
+                    "{C:tarot}The Empress{}",
                 },
             },
         },
