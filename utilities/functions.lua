@@ -7,6 +7,158 @@ function Orchid.prob_check(chance, odds, key)
     return false
 end
 
+function Orchid.pick_ranks(count, seed)
+    local seen = {}
+    local pool = {}
+
+    if G.playing_cards and #G.playing_cards > 0 then
+        for _, card in ipairs(G.playing_cards) do
+            if card and not SMODS.has_no_rank(card) and card.base and card.base.value then
+                local key = card.base.value
+                local rank = SMODS.Ranks[key]
+
+                if rank and rank.id and not seen[key] then
+                    seen[key] = true
+                    pool[#pool + 1] = {
+                        key = key,
+                        id = rank.id,
+                    }
+                end
+            end
+        end
+    end
+
+    if #pool == 0 then
+        local fallback = {
+            '2', '3', '4', '5', '6', '7', '8',
+            '9', '10', 'Jack', 'Queen', 'King', 'Ace'
+        }
+
+        for _, key in ipairs(fallback) do
+            local rank = SMODS.Ranks[key]
+            if rank and rank.id then
+                pool[#pool + 1] = {
+                    key = key,
+                    id = rank.id,
+                }
+            end
+        end
+    end
+
+    local picked = {}
+    for i = 1, count do
+        if #pool == 0 then break end
+
+        local index = pseudorandom(seed .. '_' .. i, 1, #pool)
+        picked[#picked + 1] = table.remove(pool, index)
+    end
+
+    return picked
+end
+
+function Orchid.rank_in_list(card, ranks)
+    if SMODS.has_no_rank(card) then return false end
+
+    local id = card:get_id()
+    for _, rank in ipairs(ranks or {}) do
+        if rank.id == id then
+            return true
+        end
+    end
+
+    return false
+end
+
+function Orchid.random_legendary_joker(seed, exclude_key)
+    local pool = {}
+
+    for _, center in ipairs(G.P_JOKER_RARITY_POOLS[4] or {}) do
+        local in_pool = SMODS.add_to_pool(center)
+
+        if in_pool
+            and center.key ~= exclude_key
+            and not G.GAME.banned_keys[center.key] then
+            pool[#pool + 1] = center
+        end
+    end
+
+    return pseudorandom_element(pool, pseudoseed(seed))
+end
+
+function Orchid.add_to_deck(card)
+    card:add_to_deck()
+    G.deck.config.card_limit = G.deck.config.card_limit + 1
+    table.insert(G.playing_cards, card)
+
+    G.deck:emplace(card)
+    card.states.visible = nil
+
+    G.E_MANAGER:add_event(Event({
+        func = function()
+            card:start_materialize()
+            return true
+        end
+    }))
+end
+
+-- Special thanks for All In Jest mod! <3
+Orchid.card_area_preview = function(cardArea, desc_nodes, config)
+    if not config then config = {} end
+    local height = config.h or 1.25
+    local width = config.w or 1
+    local card_limit = config.card_limit or #config.cards or 1
+    local override = config.override or false
+    local cards = config.cards or {}
+    local padding = config.padding or 0.07
+    local margin_left = config.ml or 0
+    local margin_top = config.mt or 0
+    local alignment = config.alignment or "cm"
+    local scale = config.scale or 1
+    local type = config.type or "title"
+    local box_height = config.box_height or 0
+    local highlight_limit = config.highlight_limit or 0
+    local x_offset = config.x_offset or 0
+    if override or not cardArea then
+        cardArea = CardArea(
+            G.ROOM.T.x + margin_left * G.ROOM.T.w - x_offset, G.ROOM.T.h + margin_top
+            , G.CARD_W <= width * G.CARD_W and width * G.CARD_W or G.CARD_W, height * G.CARD_H,
+            { card_limit = card_limit, type = type, highlight_limit = highlight_limit, collection = true, temporary = true }
+        )
+        for i, card in ipairs(cards) do
+            card.T.w = card.T.w * scale
+            card.T.h = card.T.h * scale
+            card.VT.h = card.T.h
+            card.VT.h = card.T.h
+            local area = cardArea
+            if (card.config.center) then
+                card:set_sprites(card.config.center)
+            end
+            area:emplace(card)
+        end
+    end
+    local uiEX = {
+        n = G.UIT.R,
+        config = { align = alignment, padding = padding, no_fill = true, minh = box_height },
+        nodes = {
+            {
+                n = G.UIT.R,
+                config = { padding = padding, r = 0.12, colour = lighten(G.C.JOKER_GREY, 0.8), emboss = 0.07 },
+                nodes = {
+                    { n = G.UIT.O, config = { object = cardArea } }
+                }
+            }
+        }
+    }
+    if cardArea then
+        if desc_nodes then
+            desc_nodes[#desc_nodes + 1] = {
+                uiEX
+            }
+        end
+    end
+    return uiEX
+end
+
 function Orchid.is_gold_card(card)
     return card
         and card.config.center

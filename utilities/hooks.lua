@@ -1,3 +1,19 @@
+local card_is_face_ref = Card.is_face
+
+function Card:is_face(from_boss)
+    local ret = card_is_face_ref(self, from_boss)
+    if ret then return ret end
+
+    if self.debuff and not from_boss then return end
+
+    if next(SMODS.find_card('j_orchid_3djoker')) then
+        if SMODS.has_enhancement(self, 'm_mult')
+            or SMODS.has_enhancement(self, 'm_bonus') then
+            return true
+        end
+    end
+end
+
 local highlight_ref = Card.highlight
 
 function Card:highlight(is_highlighted)

@@ -27,7 +27,7 @@ Orchid.joker {
                         Orchid.modify_rank(scored_card, -card.ability.extra.cnt)
                         return {
                             message = localize("orchid_drain_ex"),
-                            card = card
+                            card = scored_card
                         }
                     else
                         SMODS.destroy_cards(scored_card)

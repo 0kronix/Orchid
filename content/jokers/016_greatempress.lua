@@ -19,6 +19,7 @@ Orchid.joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.p_arcana_normal_1
         info_queue[#info_queue + 1] = G.P_CENTERS.p_spectral_normal_1
         info_queue[#info_queue + 1] = G.P_CENTERS.c_empress
+
         local num, den = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
         return { vars = { num, den } }
     end,
@@ -30,7 +31,22 @@ Orchid.joker {
 
             local seed = card.config.center.key .. '_empress_' .. (context.index or 0)
             if Orchid.prob_check(G.GAME.probabilities.normal, card.ability.extra.odds, seed) then
-                context.card:set_ability(G.P_CENTERS.c_empress, nil, true)
+                context.card:set_ability(G.P_CENTERS.c_empress)
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.1,
+                    blocking = false,
+                    func = function()
+                        play_sound('tarot1')
+                        return true
+                    end
+                }))
+
+                return {
+                    message = localize("k_swapped_ex"),
+                    card = context.card
+                }
             end
         end
     end,

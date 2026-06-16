@@ -2,7 +2,8 @@ return {
     misc = {
         dictionary = {
             orchid_drain_ex = "Drain!",
-            orchid_degrade_ex = "Degrade!"
+            orchid_degrade_ex = "Degrade!",
+            orchid_return_ex = "Returned!",
         }
     },
 
@@ -157,6 +158,69 @@ return {
                     "a card in {C:attention}Arcana{} or",
                     "{C:attention}Spectral{} packs with",
                     "{C:tarot}The Empress{}",
+                },
+            },
+
+            j_orchid_recall = {
+                name = "Recall",
+                text = {
+                    "At end of round,",
+                    "return {C:attention}1{} of the last {C:attention}#1#{}",
+                    "{C:red}destroyed{} playing cards",
+                    "to your deck",
+                },
+            },
+
+            j_orchid_3djoker = {
+                name = "3D Joker",
+                text = {
+                    "{C:attention}Mult{} and {C:attention}Bonus{} cards",
+                    "count as {C:attention}face{} cards",
+                }
+            },
+
+            j_orchid_multup = {
+                name = "Mult Upgrade Plate",
+                text = {
+                    "Give each scored",
+                    "{C:attention}Mult{} Card {C:mult}+1{} Mult",
+                    "permanently"
+                }
+            },
+
+            j_orchid_chipsup = {
+                name = "Chips Upgrade Plate",
+                text = {
+                    "Give each scored",
+                    "{C:attention}Bonus{} Card {C:chips}+8{} Chips",
+                    "permanently"
+                }
+            },
+
+            j_orchid_theend = {
+                name = "The End?",
+                text = {
+                    "Transforms into a random",
+                    "{C:legendary}Legendary{} Joker on {C:attention}Ante #1#{}",
+                    "{C:inactive}(Cannot appear on Ante #1# or above){}",
+                },
+            },
+
+            j_orchid_lethaljoke = {
+                name = "Lethal Joke",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult,",
+                    "Scoring {C:attention}#2#{}, {C:attention}#3#{} or {C:attention}#4#{}",
+                    "{C:red}destroys{} this Joker",
+                    "{C:inactive}(Ranks change each round){}",
+                },
+            },
+
+            j_orchid_bellbill = {
+                name = "Bell Bill",
+                text = {
+                    "{C:attention}Voucher{} in the shop",
+                    "is {C:attention}free",
                 },
             },
         },
