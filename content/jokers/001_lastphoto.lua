@@ -3,6 +3,15 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 1,
 
+    loc_txt = {
+        name = 'Last Photo',
+        text = {
+            "If {C:attention}Boss Blind{} is beaten",
+            "on your {C:attention}last hand{},",
+            "earn {C:money}$#1#{}",
+        },
+    },
+
     pixel_size = { h = 95 / 1.2 },
 
     cost = 4,

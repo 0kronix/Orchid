@@ -3,6 +3,15 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 23,
 
+    loc_txt = {
+        name = "The End?",
+        text = {
+            "Transforms into a random",
+            "{C:legendary}Legendary{} Joker on {C:attention}Ante #1#{}",
+            "{C:inactive}(Cannot appear on Ante #1# or above){}",
+        },
+    },
+
     cost = 5,
     rarity = 1,
 

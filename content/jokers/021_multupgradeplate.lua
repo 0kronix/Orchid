@@ -3,6 +3,15 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 21,
 
+    loc_txt = {
+        name = "Mult Upgrade Plate",
+        text = {
+            "Give each scored",
+            "{C:attention}Mult{} Card {C:mult}+1{} Mult",
+            "permanently"
+        }
+    },
+
     cost = 4,
     rarity = 1,
 

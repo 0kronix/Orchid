@@ -3,6 +3,17 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 12,
 
+    loc_txt = {
+        name = "Mind of Glory",
+        text = {
+            "This Joker gains {X:mult,C:white}X#1#{} Mult",
+            "if played hand contains",
+            "the {C:attention}previous{} one,",
+            "otherwise loses {X:mult,C:white}X#2#{} Mult",
+            "{C:inactive}(Currently {X:mult,C:white}X#3#{}{C:inactive}, Previous: {C:attention}#4#{}{C:inactive}){}",
+        },
+    },
+
     cost = 8,
     rarity = 3,
 

@@ -3,8 +3,17 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 5,
 
-    cost = 7,
-    rarity = 2,
+    loc_txt = {
+        name = "Spring Joker",
+        text = {
+            "{C:green}#1# in #2#{} chance to",
+            "Retrigger each played",
+            "{C:spades}Spade{} card when scored",
+        },
+    },
+
+    cost = 4,
+    rarity = 1,
 
     blueprint_compat = true,
     eternal_compat = true,

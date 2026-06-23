@@ -3,6 +3,17 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 8,
 
+    loc_txt = {
+        name = "Brain Invaders",
+        text = { {
+            "Scoring {C:attention}face{} cards",
+            "decrease rank by {C:attention}#1#{}"
+        }, {
+            "Scored {C:attention}Jacks{} are",
+            "{C:attention}destroyed{}",
+        } },
+    },
+
     cost = 9,
     rarity = 3,
 

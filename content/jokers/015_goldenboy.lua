@@ -4,6 +4,14 @@ Orchid.joker {
     atlas_id = 15,
     soul = true,
 
+    loc_txt = {
+        name = "Golden Boy",
+        text = {
+            "{C:attention}Gold{} cards can be",
+            "sold for {C:money}$#1#{}",
+        },
+    },
+
     cost = 7,
     rarity = 3,
 

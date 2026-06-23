@@ -4,6 +4,16 @@ Orchid.joker {
     atlas_id = 6,
     soul = true,
 
+    loc_txt = {
+        name = "Tornado",
+        text = { {
+            "{X:mult,C:white}X#1#{} Mult",
+        }, {
+            "{C:attention}Played cards{} are",
+            "{C:attention}shuffled{} before scoring"
+        } },
+    },
+
     cost = 4,
     rarity = 1,
 

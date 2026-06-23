@@ -3,6 +3,16 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 16,
 
+    loc_txt = {
+        name = "Great Empress",
+        text = {
+            "{C:green}#1# in #2#{} chance to replace",
+            "a card in {C:attention}Arcana{} or",
+            "{C:attention}Spectral{} packs with",
+            "{C:tarot}The Empress{}",
+        },
+    },
+
     cost = 6,
     rarity = 2,
 

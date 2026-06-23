@@ -3,6 +3,16 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 22,
 
+    loc_txt = {
+        name = "Lethal Joke",
+        text = {
+            "{X:mult,C:white}X#1#{} Mult,",
+            "Scoring {C:attention}#2#{}, {C:attention}#3#{} or {C:attention}#4#{}",
+            "{C:red}destroys{} this Joker",
+            "{C:inactive}(Ranks change each round){}",
+        },
+    },
+
     cost = 4,
     rarity = 1,
 

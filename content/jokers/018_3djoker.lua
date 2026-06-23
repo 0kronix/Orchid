@@ -3,6 +3,14 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 18,
 
+    loc_txt = {
+        name = "3D Joker",
+        text = {
+            "{C:attention}Mult{} and {C:attention}Bonus{} cards",
+            "count as {C:attention}face{} cards",
+        }
+    },
+
     cost = 8,
     rarity = 3,
 

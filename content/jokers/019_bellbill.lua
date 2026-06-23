@@ -3,6 +3,14 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 19,
 
+    loc_txt = {
+        name = "Bell Bill",
+        text = {
+            "{C:attention}Voucher{} in the shop",
+            "is {C:attention}free",
+        },
+    },
+
     cost = 10,
     rarity = 3,
 

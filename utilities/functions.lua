@@ -7,6 +7,42 @@ function Orchid.prob_check(chance, odds, key)
     return false
 end
 
+function Orchid.tablefind(tbl, val)
+    for i, v in ipairs(tbl) do
+        if v == val then
+            return true
+        end
+    end
+    return false
+end
+
+function Orchid.get_visible_hands()
+    local visible = {}
+
+    for _, hand_key in ipairs(G.handlist) do
+        if G.hands[hand_key] and G.hands[hand_key].visible then
+            table.insert(visible, hand_key)
+        end
+    end
+
+    return visible
+end
+
+function Orchid.get_unique_enh()
+    if not G.playing_cards then return {} end
+    local enh = {}
+
+    for _, card in ipairs(G.playing_cards) do
+        local card_enh = card.config.center.key
+
+        if card_enh and not Orchid.tablefind(enh, card_enh) then
+            table.insert(enh, card_enh)
+        end
+    end
+
+    return enh
+end
+
 function Orchid.pick_ranks(count, seed)
     local seen = {}
     local pool = {}
@@ -518,15 +554,6 @@ function Orchid.create_voucher(voucher, seed, cost_mod, cost)
             return true
         end
     }))
-end
-
-function Orchid.tablefind(tbl, val)
-    for i, v in ipairs(tbl) do
-        if v == val then
-            return true
-        end
-    end
-    return false
 end
 
 Orchid.soul_count = 0

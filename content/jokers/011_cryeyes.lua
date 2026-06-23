@@ -3,6 +3,16 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 11,
 
+    loc_txt = {
+        name = "Cry Eyes",
+        text = {
+            "Gain {C:chips}+#1#{} Chips for each",
+            "item not purchased",
+            "in the {C:attention}shop{}",
+            "{C:inactive}(Currently {C:chips}+#2#{}{C:inactive} Chips){}",
+        },
+    },
+
     cost = 5,
     rarity = 1,
 

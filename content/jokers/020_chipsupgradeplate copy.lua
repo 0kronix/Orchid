@@ -3,6 +3,15 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 20,
 
+    loc_txt = {
+        name = "Chips Upgrade Plate",
+        text = {
+            "Give each scored",
+            "{C:attention}Bonus{} Card {C:chips}+8{} Chips",
+            "permanently"
+        }
+    },
+
     cost = 4,
     rarity = 1,
 

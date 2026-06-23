@@ -3,6 +3,16 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 17,
 
+    loc_txt = {
+        name = "Recall",
+        text = {
+            "At end of round,",
+            "return {C:attention}1{} of the last {C:attention}#1#{}",
+            "{C:red}destroyed{} playing cards",
+            "to your deck",
+        },
+    },
+
     cost = 5,
     rarity = 1,
 

@@ -3,6 +3,14 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 7,
 
+    loc_txt = {
+        name = "Black Clover",
+        text = {
+            "Played {C:clubs}Club{} {C:attention}Lucky{} cards",
+            "earn {C:money}$#1#{} when scored",
+        },
+    },
+
     cost = 5,
     rarity = 2,
 

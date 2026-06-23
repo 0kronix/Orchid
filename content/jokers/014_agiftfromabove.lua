@@ -3,6 +3,17 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 14,
 
+    loc_txt = {
+        name = "A Gift From Above",
+        text = {
+            "{C:red}Self destructs{} after",
+            "{C:attention}#1#{} rounds, gain one of:",
+            "{C:attention}#2#{} random {C:attention}Tags{}, {C:money}$#3#{}",
+            "or {C:blue}+#4#{} hand permanently",
+            "{C:inactive}(Currently {C:attention}#5#{}{C:inactive}/#1# rounds){}",
+        },
+    },
+
     cost = 3,
     rarity = 1,
 

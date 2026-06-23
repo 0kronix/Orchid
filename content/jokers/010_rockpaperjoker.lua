@@ -3,6 +3,16 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 10,
 
+    loc_txt = {
+        name = "Rock, Paper, Joker",
+        text = {
+            "Gain {C:money}$#1#{} of",
+            "{C:attention}sell value{} when",
+            "{C:attention}#2#{} is played,",
+            "{C:inactive}(Hand changes each hand){}",
+        },
+    },
+
     cost = 3,
     rarity = 1,
 
