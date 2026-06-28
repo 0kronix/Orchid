@@ -6,7 +6,7 @@ Orchid.joker {
     loc_txt = {
         name = "Tiny Hat Joker",
         text = {
-            "Every Tag give {C:mult}+#1#{} Mult",
+            "Every {C:attention}Tag{} give {C:mult}+#1#{} Mult",
             "{C:inactive}(Currently {C:mult}+#2#{}{C:inactive}){}",
         },
     },

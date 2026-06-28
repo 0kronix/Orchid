@@ -1,4 +1,6 @@
 Orchid.joker_atlas_cols = 8
+Orchid.leg_joker_atlas_cols = 5
+Orchid.soul_count = 0
 
 function Orchid.prob_check(chance, odds, key)
     if pseudorandom(key) < chance / odds then
@@ -470,16 +472,6 @@ function Orchid.count_shop_items()
     return count
 end
 
-function Orchid.on_left_or_right_of(card, area, step)
-    local ret_card
-    for i = 1, #area do
-        if area[i] == card then
-            ret_card = area[i + step]
-        end
-    end
-    return ret_card
-end
-
 function Orchid.most_played_hand()
     local _handname, _played = 'High Card', -1
     for hand_key, hand in pairs(G.GAME.hands) do
@@ -556,11 +548,12 @@ function Orchid.create_voucher(voucher, seed, cost_mod, cost)
     }))
 end
 
-Orchid.soul_count = 0
-
 function Orchid.get_atlas_pos(id, atl)
     atl = atl or Orchid.joker_atlas_cols
-    id = id + Orchid.soul_count
+
+    if not (atl == Orchid.leg_joker_atlas_cols) then
+        id = id + Orchid.soul_count
+    end
 
     local x_id, y_id = 0, 0
 
@@ -585,12 +578,20 @@ function Orchid.joker(def)
     local id = assert(def.atlas_id, "Orchid.joker: atlas_id is required")
     def.atlas_id = nil
 
-    def.pos = Orchid.get_atlas_pos(id)
+    if def.atlas == 'leg_jokers' then
+        def.pos = Orchid.get_atlas_pos(id, Orchid.leg_joker_atlas_cols)
+    else
+        def.pos = Orchid.get_atlas_pos(id)
+    end
 
     if def.soul then
-        def.soul_pos = Orchid.get_atlas_pos(id + 1)
-        Orchid.soul_count = Orchid.soul_count + 1
-        def.soul = nil
+        if def.atlas == 'leg_jokers' then
+            def.soul_pos = Orchid.get_atlas_pos(id + Orchid.leg_joker_atlas_cols, Orchid.leg_joker_atlas_cols)
+        else
+            def.soul_pos = Orchid.get_atlas_pos(id + 1)
+            Orchid.soul_count = Orchid.soul_count + 1
+            def.soul = nil
+        end
     end
 
     return SMODS.Joker(def)

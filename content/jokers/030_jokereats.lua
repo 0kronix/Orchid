@@ -3,7 +3,7 @@ Orchid.joker {
     atlas = 'jokers',
     atlas_id = 30,
 
-    j_orchid_jokereats = {
+    loc_txt = {
         name = "Joker Eats",
         text = {
             "Skipping a {C:attention}Booster Pack",
